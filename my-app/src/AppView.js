@@ -1,6 +1,6 @@
 
 
-function App() {
+function AppView() {
   return (
     <div className="App">
       <header className="App-header">
@@ -10,4 +10,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppView;
