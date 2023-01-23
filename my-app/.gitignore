@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea
-.misc.xml
+.idea/misc.xml
 .modules.xml
 .my-routine-redux.iml
 misc.xml .idea
