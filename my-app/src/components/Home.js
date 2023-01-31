@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { useTranslation } from "react-i18next";
 import { CardActionArea, CardMedia, CardContent, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
@@ -24,25 +25,18 @@ const useStyles = makeStyles(theme => ({
 
 const Home = () => {
 const  classes = useStyles();
+const { t } = useTranslation('Home')
 
         return (
             <div className={classes.root}>
-                {/*<div className={classes.title}>*/}
-                {/*    <h1>Hey You Guys!!!!!!!</h1>*/}
-                {/*</div>*/}
                 <div>
                     <CardActionArea>
-                        <CardMedia
-                            className={classes.media}
-                            image="https://images.unsplash.com/photo-1540573133985-87b6da6d54a9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80"
-                            title="Surprised monkey"
-                        />
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
-                                OMG it's a Monkey!
+                                {t('title1')}
                             </Typography>
                             <Typography variant="body2" color="textSecondary" component="p">
-                                Monkey is a common name that may refer to groups or species of mammal. The term is applied descriptively to groups of primates
+                                {t('subTitle')}
                             </Typography>
                         </CardContent>
                     </CardActionArea>
