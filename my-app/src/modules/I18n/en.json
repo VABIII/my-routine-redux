@@ -2,7 +2,21 @@
   "Home": {
     "title1": "My Routine",
     "subTitle": "Personalized routines that automatically adjusts for strength or size training"
+  },
+  "Header": {
+    "Link1": "sdg",
+    "link2": "Login",
+    "link3": "Logout",
+    "link4": "My Routines"
+  },
+  "login": {
+    "title": "Login into your account to get started!",
+    "error": "",
+    "label1": "Username",
+    "label2": "Password",
+    "action1": "login"
   }
+
 
 }
 

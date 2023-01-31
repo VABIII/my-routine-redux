@@ -8,7 +8,6 @@ const useStyles = makeStyles(theme => ({
         margin: theme.spacing(3),
         width: "100%",
         display: "flex",
-        // alignContent: "center",
         justifyContent: "center",
         background: theme.palette.backgroundColor
     },
