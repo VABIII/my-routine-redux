@@ -11,12 +11,13 @@ import './modules/I18n';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Router>
-        <ThemeProvider theme={theme}>
-            <CssBaseline/>
-            <AppView />
-        </ThemeProvider>
-    </Router>
+
+    <ThemeProvider theme={theme}>
+        <CssBaseline/>
+        <Router>
+                <AppView />
+        </Router>
+    </ThemeProvider>
 );
 
 

@@ -15,6 +15,9 @@
     "label1": "Username",
     "label2": "Password",
     "action1": "login"
+  },
+  "header": {
+    "link1": "Login"
   }
 
 

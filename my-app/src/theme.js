@@ -14,6 +14,7 @@ const theme = createTheme({
     palette: {
         type: "dark",
         primary: {500: colors.get("deepBlue")},
+        secondary: {A400: colors.get('mandarin')},
         backgroundColor: colors.get("nightMoon")
     },
     mode: "dark"
