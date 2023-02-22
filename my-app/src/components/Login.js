@@ -5,8 +5,6 @@ import {useRoutine} from "../modules/user";
 import {
     Box,
     Card,
-    CardActionArea,
-    CardMedia,
     CardContent,
     Typography,
     TextField,
@@ -33,18 +31,11 @@ const Login = () => {
     const [values, setValues] = useState("");
     const [r, setR] = useState([]);
     const { t } = useTranslation('login');
+    const userId = 1
     const routine = useRoutine();
+
+
     console.log(r)
-
-    useEffect(() => {
-        const ur = async () => {
-            const data = await routine.fetchRoutine();
-            console.log(data)
-            setR(data)
-
-        }
-        ur();
-    }, [])
     const onChange = e => {
         const name = e.target.name;
         const value = e.target.value;
@@ -58,10 +49,10 @@ const Login = () => {
     };
 
     const onClick = () => {
-        const r = routine.fetchRoutine()
-        console.log(r);
+
 
     };
+    console.log(routine)
 
     return (
         <Card className={classes.root}>
@@ -69,7 +60,7 @@ const Login = () => {
                 <Typography variant='h2'>{t('title')}</Typography>
                 <Box>
                     <TextField className={classes.inputs} name={'userName'} onChange={onChange} label={t('label1')}></TextField>
-                    <TextField className={classes.inputs} name={'password'} onChange={onChange} label={'Password'}></TextField>
+                    <TextField className={classes.inputs} name={'password'} onChange={onChange} label={t('label2')}></TextField>
                 </Box>
             </CardContent>
             <CardActions>

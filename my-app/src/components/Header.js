@@ -15,11 +15,14 @@ import { useTranslation } from "react-i18next";
 const useStyles = makeStyles(theme => ({
     container: {
         width: "100%",
-        margin: theme.spacing(2)
+        margin: theme.spacing(2),
+        display: "flex",
+        justifyContent: "space-around"
     },
     text: {
         color: theme.palette.primary.main,
-        textDecoration: 'none'
+        textDecoration: 'none',
+        margin: theme.spacing(3)
     },
     link: {
 
@@ -39,6 +42,12 @@ const Header = () => {
                     to={'/api/user/userLogin'}
                     underline={'none'}
                 >{t('link1')}
+                </Link>
+                <Link
+                    className={classes.text}
+                    to={'/api/user/routine'}
+                    underline={'none'}
+                >{t('link2')}
                 </Link>
             </Typography>
         </Box>

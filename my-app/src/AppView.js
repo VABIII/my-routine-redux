@@ -3,7 +3,8 @@ import { Route, Routes }from 'react-router-dom';
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Header from "./components/Header";
-import Provider from "./modules/user";
+import RoutineView from "./components/RoutineView";
+import {RoutineContext} from "./modules/user";
 
 function AppView() {
 
@@ -12,10 +13,11 @@ function AppView() {
 
     return (
 
-    <Provider>
+
         <div className="AppView">
             <Header/>
             <Routes>
+                <Route path='/api/user/routine' element={<RoutineView/> }/>
                 <Route path='/api/user/userLogin' element={<Login/>}/>
                 <Route path='/' element={<Home/>}/>
             </Routes>
@@ -24,7 +26,7 @@ function AppView() {
 
 
         </div>
-    </Provider>
+
   );
 }
 
