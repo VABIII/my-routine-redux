@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
 import { makeStyles } from '@material-ui/styles';
 import axios from "axios";
+import Push from "./Push";
 import {
     Grid,
     Box,
@@ -13,10 +14,15 @@ import {
     Button
 } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => {
+const useStyles = makeStyles(theme => ({
+    container: {
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column"
 
+    }
 
-});
+}));
 
 
 const RoutineView = () => {
@@ -34,18 +40,21 @@ const RoutineView = () => {
         fetchUserRoutine(1);
     }, []);
 
-    console.log(routine)
+
+    let push = routine.filter(x => {
+        return x.type === 'push'
+    });
+    let pull = routine.filter(x => {
+        return x.type === 'pull'
+    });
+    let leg = routine.filter(x => {
+        return x.type === 'leg'
+    });
 
     return (
-        <Grid>{
-            routine.map(x => (
-                <Grid>
-                    <Typography>{x.exerciseName}</Typography>
-                    <Typography>{x.type}</Typography>
-                    <Typography>{x.maxWeight}</Typography>
-                </Grid>
-            ))
-        }</Grid>
+        <Box className={classes.container}>
+            <Push push={push}/>
+        </Box>
     );
 };
 
