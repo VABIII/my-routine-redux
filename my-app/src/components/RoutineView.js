@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useTranslation } from "react-i18next";
+import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import axios from "axios";
-import Push from "./Push";
 import {
     Grid,
     Box,
@@ -13,48 +10,45 @@ import {
     CardActions,
     Button
 } from "@material-ui/core";
+import Weights from "./Weights";
 
 const useStyles = makeStyles(theme => ({
     container: {
         display: "flex",
         justifyContent: "center",
-        flexDirection: "column"
-
+    },
+    content: {
+        marginRight: theme.spacing(2),
+        marginLeft: theme.spacing(2)
     }
+
 
 }));
 
 
 const RoutineView = () => {
-    const [routine, setRoutine] = useState([]);
     const classes = useStyles();
+    const routines = ['Push', 'Pull', 'Leg'];
 
 
+    const onClick = (e) => {
+        console.log(e)
+        window.location.href = 'http://localhost:3000/api/user/routine';
+    }
 
-    useEffect( () => {
-        const fetchUserRoutine = async id => {
-            await axios.get(`http://localhost:5000/api/routine/${id}`)
-                .then(res => setRoutine(res.data))
-                .catch(e => console.error(e));
-        };
-        fetchUserRoutine(1);
-    }, []);
-
-
-    let push = routine.filter(x => {
-        return x.type === 'push'
-    });
-    let pull = routine.filter(x => {
-        return x.type === 'pull'
-    });
-    let leg = routine.filter(x => {
-        return x.type === 'leg'
-    });
 
     return (
-        <Box className={classes.container}>
-            <Push push={push}/>
-        </Box>
+            <Box className={classes.container}>{
+                routines.map((x, i) => (
+                    <Box className={classes.content} key={i}>
+                        <Box>
+                            <Typography onClick={onClick}>{x}</Typography>
+                            <Button onClick={onClick}>Push</Button>
+                        </Box>
+                    </Box>
+                ))
+            }
+            </Box>
     );
 };
 
