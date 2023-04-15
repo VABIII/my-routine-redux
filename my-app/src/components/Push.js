@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/styles';
-import React, { useState, useContext } from 'react';
-import UserContext from "../contexts/UserContext";
+import React, { useEffect } from 'react';
+import { useRoutine } from "../modules/user";
 import Weights from "./Weights";
 import {
     Grid,
@@ -63,44 +63,45 @@ const useStyles = makeStyles(theme => ({
 
 
 const Push = props => {
-    const [exercises, setExercises] = useState([]);
     const classes = useStyles();
-    let strength = [];
-    const routine = useContext(UserContext);
+    const r = useRoutine()
+    let routine = [];
 
+    useEffect(() => {
+        r.getUserRoutines(1)
+
+    }, []);
+
+    routine = r.userPushRoutine;
 
     return (
         <Box className={classes.container}>
-        <Box className={classes.view}>
-        <Box >
-            <Typography className={classes.textTitle}>Your Push Routine</Typography>
-        </Box>
-        <Box className={classes.view}>
-            {
-                routine.map((x, i) => {
-                    const name = Object.keys(x)
-                    const w = Object.values(x)
+            <Box className={classes.view}>
+                <Box >
+                    <Typography className={classes.textTitle}>Your Push Routine</Typography>
+                </Box>
+                <Box className={classes.view}>
+                    {
+                        routine.map((x, i) => {
+                            const name = Object.keys(x)
+                            const w = Object.values(x)
 
-                    return (
-                    <Card key={i} c>
-                        <CardContent className={classes.exerciseBox}>
-                            <Box>
-                                <Typography className={classes.title}>{name}</Typography>
-                            </Box>
-                            <Grid container className={classes.weightsContainer}>
-                                <Weights w={w}/>
-                            </Grid>
-                        </CardContent>
-                    </Card>
-                    )
-
-                })
-
-
-
-            }
-        </Box>
-        </Box>
+                            return (
+                            <Card key={i} c>
+                                <CardContent className={classes.exerciseBox}>
+                                    <Box>
+                                        <Typography className={classes.title}>{name}</Typography>
+                                    </Box>
+                                    <Grid container className={classes.weightsContainer}>
+                                        <Weights w={w}/>
+                                    </Grid>
+                                </CardContent>
+                            </Card>
+                            )
+                        })
+                    }
+                </Box>
+            </Box>
         </Box>
     );
 };

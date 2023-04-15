@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react';
 import { useTranslation } from "react-i18next";
 import { makeStyles } from '@material-ui/styles';
-import {useRoutine} from "../modules/user";
+
 import {
     Box,
     Card,
@@ -11,7 +11,7 @@ import {
     CardActions,
     Button
 } from "@material-ui/core";
-import UserContext from "../contexts/UserContext";
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -51,10 +51,9 @@ const useStyles = makeStyles(theme => ({
 const Login = () => {
     const classes = useStyles();
     const [values, setValues] = useState("");
-    const [r, setR] = useState([]);
     const { t } = useTranslation('login');
     const userId = 1
-    const routine = useContext(UserContext);
+
 
 
 
@@ -73,10 +72,7 @@ const Login = () => {
 
     };
 
-    for (let i = 0; i < routine.length; i++) {
-        console.log(Object.keys(routine[i])[0] )
-        console.log(Object.values(routine[i]) )
-    }
+
 
 
 

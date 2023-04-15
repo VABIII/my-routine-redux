@@ -8,7 +8,7 @@ import theme from './theme'
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import './modules/I18n';
-import Provider, { useRoutine } from "./modules/user";
+import Provider from "./modules/user";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

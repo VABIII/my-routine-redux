@@ -10,7 +10,7 @@ import {
     CardActions,
     Button
 } from "@material-ui/core";
-import Weights from "./Weights";
+
 
 const useStyles = makeStyles(theme => ({
     container: {
