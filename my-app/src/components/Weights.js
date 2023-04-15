@@ -14,12 +14,17 @@ import {
 const useStyles = makeStyles(theme => ({
     weightContainer: {
         margin: theme.spacing(2),
-        justifyContent: "center",
-        alignContent: "center"
+        width: "75%"
     },
     weight: {
         margin: theme.spacing(2),
-        alignSelf: "center"
+        width: "100%",
+        color: "#172B4D"
+    },
+    weightBox: {
+        background: "whitesmoke",
+        borderRadius: "12px",
+        maxWidth: "33%"
     }
 
 }));
@@ -29,23 +34,21 @@ const useStyles = makeStyles(theme => ({
 const Weights = props => {
     const classes = useStyles();
     const { w } = props;
-    // console.log(weights)
-    // const name = Object.keys(weights)
-    // const weightArr = Object.values(weights);
-
 
     return (
-        <Grid item className={classes.weightContainer}>{
+        <Box  className={classes.weightContainer}>{
             w[0].map((x, i) => {
                 return(
-                    <Typography key={i} className={classes.weight}>
-                        {x}
-                    </Typography>
+                    <Box className={classes.weightBox}>
+                        <Typography key={i} className={classes.weight}>
+                            {x}
+                        </Typography>
+                    </Box>
 
                 )
             })
 
-        }</Grid>
+        }</Box>
 
     );
 };

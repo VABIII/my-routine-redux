@@ -45,10 +45,18 @@ const useStyles = makeStyles(theme => ({
         borderBottom: 1,
         borderColor: "whitesmoke",
         justifyContent: "center",
-        textAlign: "center"
+        textAlign: "center",
+        width: "100%"
     },
     weightsContainer: {
-        justifyContent: "center"
+        justifyContent: "center",
+        textAlign: "left",
+        width: "500px",
+        background: "#172b4D",
+        borderRadius: "12px"
+    },
+    title: {
+        fontSize: "32px",
     }
 
 }));
@@ -77,7 +85,7 @@ const Push = props => {
                     <Card key={i} c>
                         <CardContent className={classes.exerciseBox}>
                             <Box>
-                                <Typography>{name}</Typography>
+                                <Typography className={classes.title}>{name}</Typography>
                             </Box>
                             <Grid container className={classes.weightsContainer}>
                                 <Weights w={w}/>

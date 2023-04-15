@@ -8,15 +8,18 @@ import theme from './theme'
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import './modules/I18n';
+import Provider, { useRoutine } from "./modules/user";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <ThemeProvider theme={theme}>
-        <CssBaseline/>
-        <Router>
-                <AppView />
-        </Router>
+        <Provider.Provider>
+            <CssBaseline/>
+            <Router>
+                    <AppView />
+            </Router>
+        </Provider.Provider>
     </ThemeProvider>
 );
 

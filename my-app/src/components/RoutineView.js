@@ -33,7 +33,7 @@ const RoutineView = () => {
 
     const onClick = (e) => {
         console.log(e)
-        window.location.href = 'http://localhost:3000/api/user/routine';
+        window.location.href = 'http://localhost:3000/api/user/push';
     }
 
 

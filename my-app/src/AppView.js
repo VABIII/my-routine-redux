@@ -7,38 +7,56 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Push from "./components/Push";
 import axios from "axios";
+import Provider, { useRoutine } from "./modules/user";
 
 function AppView() {
-    const [routine, setRoutine] = useState([]);
+    const [ur, setUr] = useState([])
+    const r = useRoutine();
+    let {data} = r
 
-    useEffect( () => {
-        const fetchUserRoutine = async id => {
-            await axios.get(`http://localhost:5000/api/routine/${id}/1`)
-                .then(res => setRoutine(res.data))
-                .catch(e => console.error(e));
-        };
-        fetchUserRoutine(1);
-    }, []);
+    const getR = async id => {
+        let res = await r.getUserRoutine(id);
+        setUr(res)
 
+
+    }
+
+    useEffect(() => {
+        getR(1)
+    }, [])
+
+    // const Routine = () => {
+    //     const { routine } = useRoutineContext();
+    //     return <span>{routine}</span>
+    // }
+    //
+    // const Button = () => {
+    //     const { routineSetter } = useRoutineContext();
+    //     return <button onClick={routineSetter}>Set New Routine</button>
+    //
+    // }
 
 
     return (
 
 
-        <div className="AppView">
-            <UserContext.Provider value={routine}>
-            <Header/>
-            <Routes>
-                <Route path='/api/user/push' element={<Push/> }/>
-                <Route path='/api/user/routine' element={<RoutineView/> }/>
-                <Route path='/api/user/userLogin' element={<Login/>}/>
-                <Route path='/' element={<Home/>}/>
-            </Routes>
-            </UserContext.Provider>
+
+            <div className="AppView">
+                {console.log(ur)}
+                <Header/>
+                {/*<Routine/>*/}
+                {/*<Button/>*/}
+                <Routes>
+                    <Route path='/api/user/push' element={<Push/> }/>
+                    <Route path='/api/user/routine' element={<RoutineView/> }/>
+                    <Route path='/api/user/userLogin' element={<Login/>}/>
+                    <Route path='/' element={<Home/>}/>
+                </Routes>
 
 
 
-        </div>
+
+            </div>
 
   );
 }
