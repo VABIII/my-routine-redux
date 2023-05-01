@@ -39,7 +39,7 @@ const Weights = props => {
         <Box  className={classes.weightContainer}>{
             w[0].map((x, i) => {
                 return(
-                    <Box className={classes.weightBox}>
+                    <Box className={classes.weightBox} key={i}>
                         <Typography key={i} className={classes.weight}>
                             {x}
                         </Typography>

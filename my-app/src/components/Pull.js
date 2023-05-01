@@ -17,9 +17,9 @@ import {
 const useStyles = makeStyles(theme => ({
     container: {
         width: "100%",
-            margin: theme.spacing(2),
-            display: "flex",
-            justifyContent: "space-around"
+        margin: theme.spacing(2),
+        display: "flex",
+        justifyContent: "space-around"
     },
     view: {
         justifyContent: "space-around",
@@ -61,12 +61,10 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-
-const Push = () => {
+const Pull = () => {
     const classes = useStyles();
     const r = useRoutine()
-    // let routine = [];
-    let routine = r.userPushRoutine;
+    let routine = r.userPullRoutine;
 
     return (
         <Box className={classes.container}>
@@ -81,16 +79,16 @@ const Push = () => {
                             const w = Object.values(x)
 
                             return (
-                            <Card key={i} c>
-                                <CardContent className={classes.exerciseBox}>
-                                    <Box>
-                                        <Typography className={classes.title}>{name}</Typography>
-                                    </Box>
-                                    <Grid container className={classes.weightsContainer}>
-                                        <Weights w={w}/>
-                                    </Grid>
-                                </CardContent>
-                            </Card>
+                                <Card key={i} c>
+                                    <CardContent className={classes.exerciseBox}>
+                                        <Box>
+                                            <Typography className={classes.title}>{name}</Typography>
+                                        </Box>
+                                        <Grid container className={classes.weightsContainer}>
+                                            <Weights w={w}/>
+                                        </Grid>
+                                    </CardContent>
+                                </Card>
                             )
                         })
                     }
@@ -100,4 +98,54 @@ const Push = () => {
     );
 };
 
-export default Push;
+export default Pull;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

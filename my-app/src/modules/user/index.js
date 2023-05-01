@@ -1,7 +1,7 @@
 import createContainer from 'constate';
 import { useState } from "react";
 import axios from "axios";
-import {pushRoutineBuilder, pullRoutineBuilder, legRoutineBuilder} from "../../utils/routineHelpers";
+import {pushStrengthRoutineBuilder, pullStrengthRoutineBuilder, legStrengthRoutineBuilder} from "../userHelpers/routineHelpers";
 
 
 const getRoutine = async id => {
@@ -14,25 +14,25 @@ const getRoutine = async id => {
 }
 
 
-const initialize = () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+const Initialize = () => {
+
     const [userPushRoutine, setUserPushRoutine] = useState([]);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [userPullRoutine, setUserPullRoutine] = useState([]);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [userLegRoutine, setUserLegRoutine] = useState([]);
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [user, setUser] = useState({});
 
     return {
+        userdata: {
+
+        },
         routine: {
-            getUserRoutines: async id => {
+            getUserStrengthRoutines: async id => {
 
                     await getRoutine(id)
                         .then(res => {
-                            let push = pushRoutineBuilder(res);
-                            let pull = pullRoutineBuilder(res);
-                            let leg = legRoutineBuilder(res);
+                            let push = pushStrengthRoutineBuilder(res);
+                            let pull = pullStrengthRoutineBuilder(res);
+                            let leg = legStrengthRoutineBuilder(res);
                             setUserPushRoutine(push);
                             setUserPullRoutine(pull);
                             setUserLegRoutine(leg);
@@ -50,16 +50,20 @@ const initialize = () => {
 };
 
 
-const [Provider, useRoutine] = createContainer(initialize, value => value.routine);
-
+const [Provider, useUser, useRoutine] = createContainer(
+    Initialize,
+    value => value.userdata,
+    value => value.routine,
+    );
 
 
 export {
+    useUser,
     useRoutine,
 }
 
 
-export default { Provider };
+export default {Provider};
 
 
 

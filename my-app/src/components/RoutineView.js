@@ -33,7 +33,7 @@ const RoutineView = () => {
 
     const onClick = (e) => {
         console.log(e)
-        window.location.href = 'http://localhost:3000/api/user/push';
+        window.location.href = `http://localhost:3000/api/user/${e}`;
     }
 
 
@@ -42,8 +42,8 @@ const RoutineView = () => {
                 routines.map((x, i) => (
                     <Box className={classes.content} key={i}>
                         <Box>
-                            <Typography onClick={onClick}>{x}</Typography>
-                            <Button onClick={onClick}>Push</Button>
+                            <Typography>{x}</Typography>
+                            <Button onClick={() => onClick(x)}>{x}</Button>
                         </Box>
                     </Box>
                 ))
